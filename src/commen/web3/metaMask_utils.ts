@@ -1,4 +1,6 @@
-let web3;
+import store from "@/commen/vuex/store";
+
+export let web3;
 // MetaMask 登录
 export const author = async () => {
   var web3Provider;
@@ -7,7 +9,9 @@ export const author = async () => {
     web3Provider = window.ethereum;
     try {
       // MetaMask 请求用户授权
-      await window.ethereum.enable();
+      await window.ethereum.enable().then(res => {
+        store.commit("insertAddress", res)
+      });
     } catch (error) {
       // 用户不授权时
       console.error("User denied account access")
