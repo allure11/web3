@@ -5,18 +5,26 @@ import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from "unplugin-vue-components/resolvers";
 import {resolve} from 'path';
 
+/**
+ * 获取当前路径跟dir拼接
+ * @param dir
+ */
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
 }
 
 // https://vitejs.dev/config/
 export default defineConfig({
+
+  define: {
+    'process.env': {}
+  },
   resolve: {
     // 引入组件时可以省略下面的后缀
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     // 目录别名，需要配合 tsconfig.json 使用
     alias: {
-      "@/": pathResolve('src') + '/'
+      "@/": pathResolve('src') + '/',
     }
   },
   plugins: [

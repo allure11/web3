@@ -7,7 +7,7 @@ export const router = createRouter({
   routes: [
     {path: '/login', component: Login},
     {path: '/home', component: Home},
-    {path: '/', redirect: '/home'}
+    {path: '/', redirect: '/home'},
   ]
 } as RouterOptions)
 
